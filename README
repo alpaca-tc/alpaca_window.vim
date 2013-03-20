@@ -1,0 +1,31 @@
+
+[this script](http://github.com/taichouchou2/alpaca_window.vim)
+
+*INTRODUCTION*
+vimrcに記述していたwindow移動系scriptをautoloadに分離
+Windowを便利に移動出来るscript集(?)
+
+- bufferを開くときに、同じfiletypeで開く
+- bufferを開くときに、縦横比の効率を考慮して開く
+- bufferを開くときに、デフォルトのfiletypeを設定
+- tabとwindowを移動出来るscript
+
+*USAGE*
+<Plug>でmappingがあるので、好きなように設定
+
+*SETTING*
+
+" 新しいbufferを開いた時のデフォルトfiletype
+let g:alpaca_window_default_filetype='ruby'
+
+" mappingは名前みたら何となく分かるかと。
+" よく出回っているscriptも混じってます。
+
+nmap <silent> <C-W>n <Plug>(alpaca_window_new)
+nmap <silent> <C-W><C-N> <Plug>(alpaca_window_smart_new)
+nmap <silent> tc <Plug>(alpaca_window_tabnew)
+
+nmap <silent> L <Plug>(alpaca_window_move_next_window_or_tab)
+nmap <silent> H <Plug>(alpaca_window_move_previous_window_or_tab)
+nmap <silent> tw <Plug>(alpaca_window_move_buffer_into_last_tab)
+
