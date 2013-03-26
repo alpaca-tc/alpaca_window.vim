@@ -6,11 +6,11 @@ endfunction"}}}
 
 " smart_close"{{{
 function! alpaca_window#smart_close() "{{{
-  if winnr('$') != 1 |close| endif
+  if (winnr('$') == 1) | quit! | endif
 endfunction "}}}
 
 function! alpaca_window#set_smart_close() "{{{
-  autocmd BufEnter <buffer> call alpaca_window#smart_close()
+  au BufEnter <buffer> call alpaca_window#smart_close()
 endfunction"}}}
 "}}}
 
