@@ -1,6 +1,5 @@
-
 function! alpaca_window#move#next_window_or_tab() "{{{
-  if winnr() < winnr("$")
+  if winnr() < winnr('$')
     wincmd w
   else
     tabnext
@@ -12,16 +11,15 @@ function! alpaca_window#move#previous_window_or_tab() "{{{
   if winnr() > 1
     wincmd W
   else
-
     tabprevious
-    execute winnr("$") . "wincmd w"
+    execute winnr('$') . 'wincmd w'
   endif
 endfunction"}}}
 
 function! alpaca_window#move#buffer_into_last_tab() "{{{
   let n = bufnr('%')
-  if ( tabpagenr("$") != 1)
-    q
+  if ( tabpagenr('$') != 1)
+    quit
   endif
 
   tablast
