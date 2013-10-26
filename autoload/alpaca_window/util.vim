@@ -1,11 +1,14 @@
 " @return [String] 'v' or ''
-function! alpaca_window#util#smart_split_how()
-  return ( winwidth(0) > winheight(0) * 2 )? 'v' : ''
-endfunction
+function! alpaca_window#util#smart_split_how() "{{{
+  let s:proportion = exists('g:alpaca_window_max_height') && exists('g:alpaca_window_max_width')
+        \ ? str2float(g:alpaca_window_max_height) / str2float(g:alpaca_window_max_width) : 0.5
 
-function! alpaca_window#util#get_smart_split_command(cmd)
+  return (winwidth(0) * s:proportion > winheight(0)) ? 'v' : ''
+endfunction"}}}
+
+function! alpaca_window#util#get_smart_split_command(cmd) "{{{
   return alpaca_window#util#smart_split_how() . a:cmd
-endfunction
+endfunction"}}}
 
 function! alpaca_window#util#fold_buffer(when_focusing) "{{{
   if a:when_focusing
@@ -25,4 +28,8 @@ endfunction"}}}
 function! alpaca_window#util#fold_buffer_automatically() "{{{
   autocmd WinLeave <buffer> call alpaca_window#util#fold_buffer(0)
   autocmd WinEnter <buffer> call alpaca_window#util#fold_buffer(1)
+endfunction"}}}
+
+function! s:get_script_variables() "{{{
+  return s:
 endfunction"}}}
