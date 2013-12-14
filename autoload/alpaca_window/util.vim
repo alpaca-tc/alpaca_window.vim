@@ -26,8 +26,8 @@ function! alpaca_window#util#fold_buffer(when_focusing) "{{{
 endfunction"}}}
 
 function! alpaca_window#util#fold_buffer_automatically() "{{{
-  autocmd WinLeave <buffer> call alpaca_window#util#fold_buffer(0)
-  autocmd WinEnter <buffer> call alpaca_window#util#fold_buffer(1)
+  autocmd WinLeave <buffer> silent call alpaca_window#util#fold_buffer(0)
+  autocmd WinEnter <buffer> silent call alpaca_window#util#fold_buffer(1)
 endfunction"}}}
 
 function! s:get_script_variables() "{{{
