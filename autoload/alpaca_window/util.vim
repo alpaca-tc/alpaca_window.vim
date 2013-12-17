@@ -14,8 +14,10 @@ function! alpaca_window#util#fold_buffer(when_focusing) "{{{
   if a:when_focusing
     execute 'silent resize' get(b:, '__buffer_winheight', 15)
     execute 'silent vertical resize' get(b:, '__buffer_winwidth', &columns)
-    unlet b:__buffer_winheight
-    unlet b:__buffer_winwidth
+    if exists('b:__buffer_winheight')
+      unlet b:__buffer_winheight
+      unlet b:__buffer_winwidth
+    endif
   else
     if !exists('b:__buffer_winheight')
       let b:__buffer_winheight = winheight(winnr())
